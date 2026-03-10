@@ -1,0 +1,107 @@
+/* --- ESTILOS BASE (Móvil) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.logo{
+    width: 10em;
+}
+#menu-toggle { display: none; }
+
+/* Menú lateral oculto a la derecha */
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Fuera de pantalla */
+    width: 280px;  /* Ancho fijo para móvil */
+    height: 100vh;
+    background: var(--color-primary-400);
+    flex-direction: column;
+    padding-top: 80px;
+    gap: 2rem;
+    list-style: none;
+    box-shadow: -10px 0 20px rgba(0,0,0,0.05);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li{
+    padding: var(--spacing-1) 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    padding: var(--spacing-4) var( --spacing-1);
+}
+
+/* Icono Hamburguesa */
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 110;
+}
+
+.hamburger span {
+    width: 52px;
+    height: 6px;
+    background: var(--color-accent-500);
+    transition: 0.3s;
+    border-radius: var(--radius-lg);
+}
+
+/* INTERACCIÓN: Abrir menú y animar X */
+#menu-toggle:checked ~ .nav-links {
+    right: 0;
+}
+
+/* Ajuste de animación para barras de 6px con gap de 6px */
+#menu-toggle:checked ~ .nav-inner .hamburger span:nth-child(1) { 
+    /* Movemos 12px (6 de grosor + 6 de gap) */
+    transform: translateY(12px) rotate(45deg); 
+}
+
+#menu-toggle:checked ~ .nav-inner .hamburger span:nth-child(2) { 
+    opacity: 0; 
+    transform: translateX(20px); /* Opcional: un efecto de salida hacia la derecha */
+}
+
+#menu-toggle:checked ~ .nav-inner .hamburger span:nth-child(3) { 
+    /* Movemos -12px (6 de grosor + 6 de gap) */
+    transform: translateY(-12px) rotate(-45deg); 
+}
+
+
+@media (1024px <= width){
+    .hamburger{
+        display: none;
+    }
+    .nav-links{
+        position: static;
+        background-color: transparent;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+        height: 100%;
+        width: auto;
+        padding-top: 0;
+        box-shadow: none;
+        width: 100%;
+    }
+    .nav-links a{
+        padding: 0 var(--spacing-1);
+        width: 100%;
+    }
+}

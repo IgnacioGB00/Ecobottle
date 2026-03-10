@@ -1,0 +1,49 @@
+/* Escondemos los radios */
+input[name="slider"] {
+    display: none;
+}
+
+/* Contenedor del Carrusel */
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: 300%; /* 3 tarjetas = 300% */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card {
+    width: 33.333%; /* Cada una ocupa un tercio del track */
+}
+
+/* --- Lógica de Movimiento --- */
+#slide1:checked ~ .carousel-viewport .carousel-track { transform: translateX(0%); }
+#slide2:checked ~ .carousel-viewport .carousel-track { transform: translateX(-33.333%); }
+#slide3:checked ~ .carousel-viewport .carousel-track { transform: translateX(-66.666%); }
+
+/* --- Estilos de los Indicadores (Tu Componente Figma) --- */
+.carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.rect {
+    width: 40px; /* Ajusta según tu diseño */
+    height: 16px;
+    background: #4F4F4F; /* Color inactivo (Rectangle 36/37) */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* --- Lógica de Colores de Figma --- */
+/* Cuando el radio X está activo, el rectángulo X se pone verde */
+#slide1:checked ~ .carousel-pagination .rect-6 { background: #1B5E20; }
+#slide2:checked ~ .carousel-pagination .rect-36 { background: #1B5E20; }
+#slide3:checked ~ .carousel-pagination .rect-37 { background: #1B5E20; }

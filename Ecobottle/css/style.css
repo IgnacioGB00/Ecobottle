@@ -1,0 +1,710 @@
+ *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+ }
+
+
+:root {
+
+  --color-primary-400: #3F8F44;
+  --color-primary-100: #E8F5E9;
+
+  --color-accent-500: #0288D1;
+  --color-accent-600: #0277BD;
+  --color-accent-700: #01579B;
+
+  --color-neutral-dark:   #1C1C1C;
+  --color-neutral-medium: #4F4F4F;
+  --color-neutral-white:  #FAFAFA;
+
+  --font-family: "DM Sans", sans-serif;
+
+  --font-weight-semibold: 600;
+  --font-weight-regular:  400;
+
+
+  --font-size-h1: clamp(
+    2.25rem,                        /* 36px  mobile  */
+    calc(1.81rem + 1.878vw),        /* fluido        */
+    3.5rem                          /* 56px  desktop */
+  );
+
+  --font-size-h2: clamp(
+    1.625rem,                       /* 26px  mobile  */
+    calc(1.405rem + 0.939vw),       /* fluido        */
+    2.25rem                         /* 36px  desktop */
+  );
+
+  --font-size-h3: clamp(
+    1.375rem,                       /* 22px  mobile  */
+    calc(1.243rem + 0.563vw),       /* fluido        */
+    1.75rem                         /* 28px  desktop */
+  );
+
+  --font-size-body: clamp(
+    1.125rem,                       /* 18px  mobile  */
+    calc(1.015rem + 0.469vw),       /* fluido        */
+    1.4375rem                       /* 23px  desktop */
+  );
+
+  --spacing-1:  0.5rem;    /*   8px */
+  --spacing-2:  1rem;      /*  16px */
+  --spacing-3:  1.5rem;    /*  24px */
+  --spacing-4:  2rem;      /*  32px */
+  --spacing-5:  2.5rem;    /*  40px */
+
+  --radius-md: 0.5rem;    /*  8px */
+  --radius-lg: 1rem;      /* 16px */
+
+
+}
+html{
+    scroll-behavior: smooth;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-accent-500);
+    outline-offset: 4px;
+    border-radius: var(--radius-md);
+}
+body{
+    background: var(--color-primary-100);
+    display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa todo el alto de la pantalla */
+  overflow-x: hidden;
+}
+ul a, ul li{
+    transition: color 0.3s ease;
+}
+ul a:hover, ul li:hover{
+    color: var(--color-accent-600);
+}
+
+header{
+   background-color: black; /* Fondo inicial en negro */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    grid-template-rows: 10% 90%;
+    position: relative;
+    /* Añadimos una transición para cuando cambiemos el background-image en JS */
+    transition: background-image 1s ease-in-out;
+    overflow: hidden; /* Asegura que el zoom no cree scrolls */
+}
+#animationHeader{
+   width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 6;
+    /* Estado inicial para la animación: centrado y cubriendo */
+    transform: scale(1);
+    transform-origin: center center;
+    /* Definimos la transición aquí para usarla con JS */
+    transition: transform 2s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+
+
+section, header{
+    padding: var(--spacing-4)  var(--spacing-2) ;
+}
+
+.grid{
+    display: grid;
+    
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 70vh;
+}
+ 
+
+#content-header{
+    padding: var(--spacing-1);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    opacity: 0;
+    z-index: 5;
+}
+
+.fade-in-content {
+    animation: fadeInOpacity 1s ease-out forwards;
+}
+
+@keyframes fadeInOpacity {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Un pequeño movimiento hacia arriba */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navFont-zise{
+    font-size: 2rem;
+}
+
+h1{
+    font-size: var(--font-size-h1);
+    padding-bottom: var(--spacing-3);
+    line-height: var(--spacing-5);
+}
+.text-white{
+    color: var(--color-neutral-white);
+   
+}
+
+.text-black{
+    color: var(--color-neutral-dark);
+}
+
+.Body-text{
+    font-size: var(--font-size-body);
+    padding-top: var(--spacing-3);
+    line-height: var(--spacing-4);
+}
+
+.font-family{
+    font-family: var(--font-family);
+}
+
+.h1-zise{
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-accent-700);
+    padding: var(--spacing-1);
+}
+
+.h3-zise{
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-semibold);
+}
+.h2-text{
+    font-size: var(--font-size-h2);
+}
+.button-class{
+    background-color: var(--color-accent-500);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-2) var(--spacing-1);
+    border: none;
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+      transition: color 0.3s ease;
+}
+
+
+.button-class:hover{
+    background-color: var(--color-accent-600);
+}
+
+
+
+/* section Purpose */
+
+#Purpose{
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/purposeBackground.avif") no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+#solution{
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/solution.avif") no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+
+
+
+.img-Move{
+    width: 150px;
+    height: auto;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    animation: image-pop 0.6s ease-out forwards;
+}
+
+@keyframes image-pop {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(5deg); opacity: 0; } /* Se desvanece al final */
+}
+
+/* section benefits */
+#benefits{
+    grid-template-rows: repeat(2, auto);
+    align-items: center;
+    justify-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#benefits-text{
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+}
+.underLine{
+    z-index: 1; 
+    width: 100%; 
+    border-bottom: var(--color-accent-500) solid 2px;
+    justify-content: end;
+    align-items: start;
+    height: 10vh;
+}
+.underLine p{
+    display: flex;
+    align-items: center;
+    text-align: start;
+}
+#bottle{
+    width: 25em;
+    height: 45em;
+    position:absolute;
+    z-index: 0;
+    margin: var(--spacing-1);
+}
+
+/* section process */
+/* Contenedor principal: define cuánto scroll durará la animación */
+#process {
+    position: relative;
+    height: 400vh;
+    background: url("../img/backgroundcard.webp") no-repeat center;
+    background-size: cover;
+    background-attachment: fixed; /* Mantiene el fondo quieto */
+}
+
+/* El contenedor que se queda pegado mientras haces scroll */
+.sticky-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    overflow: hidden; /* Oculta lo que sale por los lados */
+    display: flex;
+    gap: 106px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* El carrusel que realmente se moverá hacia la izquierda */
+#carousel-Process {
+    display: flex;
+    /* Eliminamos el gap excesivo y usamos flex para alinearlas */
+    transition: transform 0.1s linear;
+    will-change: transform;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+}
+
+.card-wrapper {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center; /* Esto centra la tarjeta horizontalmente */
+    align-items: center;
+    width: 100vw;
+}
+
+.card-process {
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
+    width: 90%;
+    background-color: var(--color-primary-400);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-3);
+    height: 30rem;
+    align-items: start;
+    text-align: left;
+    background-color: rgba(46, 125, 50, 0.8); 
+    
+    /* El truco del desenfoque: afecta a lo que está DEBAJO de la tarjeta */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+    
+    /* Un borde sutil ayuda a que resalte sobre el fondo */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Sombras para dar profundidad */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    margin: var(--spacing-1);
+}
+
+.card-process .h1-zise{
+    align-self: flex-end;
+    color: var(--color-neutral-white);
+    padding: var(--spacing-1) 0;
+}
+
+.card-process img{
+    align-self: center;
+    padding: var(--spacing-3) 0;
+}
+
+.card-process p{
+    padding: 0 0 var(--spacing-3) 0;
+}
+
+.card-process h3{
+    padding: 0 0 var(--spacing-1) 0;
+    justify-self: left;
+} 
+
+
+/* proff */
+#proof{
+    justify-items: center;
+}
+.hidden{
+    display: none;
+}
+.changeColor{
+    filter: grayscale(100%);
+}
+
+.flex-wrap{
+    display: flex;
+    flex-flow: wrap row;
+}
+
+.card{
+    background: rgba(2, 136, 209, 0.4);
+    width: 70vw;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-md);
+}
+.card h3{
+    padding: var(--spacing-1) 0;
+}
+.card img{
+    width: 100%;
+}
+
+.card p{
+    width: 100%;
+    padding: 0;
+}
+#star{
+    grid-template-columns: repeat(5,1fr);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-1);
+    padding: var(--spacing-2) 0;
+}
+
+#star img{
+    width: 1.5em;
+}
+
+/* CTAFinal */
+
+#CtaFinal{
+    justify-items: center;
+    align-items: center;
+    grid-area: var(--spacing-1);
+    width: 100%;
+    gap: var(--spacing-1);
+}
+#CtaFinal button{
+   margin: var(--spacing-2) 0;
+}
+#CtaFinal p{
+    padding: 0;
+}
+
+.Cta-text{
+    text-align: center;
+    justify-items: center;
+    gap: var(--spacing-1);
+}
+#CtaFinal img{
+    justify-self: stretch;
+    align-self: stretch;
+    padding: var(--spacing-2) 0;
+    object-fit: cover;
+    border-radius: 1.5em / 1.5em;
+    width: 100%;
+}
+
+footer{
+    background-color: var(--color-neutral-dark);
+    justify-items: center;
+    text-align: center;
+    gap: var(--spacing-5) 0;
+}
+footer article{
+    padding: var(--spacing-3) var(--spacing-1);
+}
+.social{
+    display: flex;
+    gap: var(--spacing-1);
+    padding-top: var(--spacing-2);
+}
+.icon-Social{
+    background: var(--color-neutral-medium);
+    border-radius: 10px;
+    width: 3.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 2s ease-in-out;
+}
+.icon-Social:hover{
+    transform: scale(1.1);
+    
+}
+.icon-Social img{
+    padding: 10px;
+}
+
+.icon-instagram{
+    width: 3em;
+}
+
+.icon-facebook {
+    width: 2.2em;
+}
+
+.footer-nav{
+    gap: var(--spacing-1);
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.text-green{
+    color: var(--color-primary-400);
+}
+
+#metricas-ventas p {
+    display: flex;
+    flex-direction: column;
+}
+
+#background-grey{
+    background-color: var(--color-neutral-medium);
+    padding: 0;
+    width: 100%;
+    padding: var(--spacing-1);
+}
+
+
+@media (768px <= width) {
+
+    section, header{
+        padding-left: var(--spacing-4);
+        padding-right: var(--spacing-4);
+    }
+    #benefits{
+        justify-items: stretch;
+    }
+
+    .card-process{
+        width: 394px;
+    }
+
+    #proof{
+        height: 490px;
+        display: grid;
+        align-items: center;
+    }
+
+.carousel-viewport{
+    max-width: 700px;
+}
+    .card{
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(3, auto);
+        height: 16em;
+        gap: 0 var(--spacing-2);
+    }
+    .card img {
+        grid-column: 1/2;
+        grid-row: 1/4;
+        height: 100%;
+    }
+
+     .card .h3-zise{
+        align-items: end;
+     }
+
+    #star{
+       align-self: self-start;
+       
+    }
+
+    #star img {
+        height: 100%;
+    }
+
+    #CtaFinal{
+       grid-template-columns: 50% 50%;
+       height: 100vh;
+    }
+
+    .Cta-text{
+        justify-items: start;
+        text-align: start;
+    }
+}
+
+@media (1024px <= width){
+    header{
+        gap: var(--spacing-4);
+    }
+
+    .navFont-zise{
+        font-size: 1.2rem;
+    }
+    #content-header{
+        text-align: left;
+        align-items: start;
+    }
+    #content-header h1{
+        width: 54vw;
+        line-height: 1;
+        
+    }
+    #content-header p{
+        width: 30vw;
+        line-height: 1.5;
+        align-self: end;
+        
+    }
+
+    .high{
+        height: 100vh;
+    }
+
+    #Purpose p, #solution p{
+        width: 50%;
+    }
+
+    #benefits{
+        grid-template-rows: 100%;
+    }
+    #benefits h2{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        text-align: center;
+        z-index: 2;
+    }
+
+    #benefits-text{
+        gap: var(--spacing-4);
+    }
+
+    #benefits-text div{
+        margin: var(--spacing-3) 0;
+    }
+
+    #benefits-text div:nth-child(1),  #benefits-text div:nth-child(2){
+        align-self: start;
+    }
+
+     #benefits-text div:nth-child(1){
+        width: 45vw;
+    }
+     #benefits-text div:nth-child(2){
+        width: 40%;
+    }
+
+     #benefits-text div:nth-child(3),  #benefits-text div:nth-child(4){
+        align-self: end;
+        text-align: end;
+        align-items: end;
+    }
+
+     #benefits-text div:nth-child(3){
+        width: 44%;
+     }
+
+     #benefits-text div:nth-child(4){
+        width: 48vw;
+     }
+
+     #bottle{
+        width: 74vh;
+     }
+
+     footer{
+        margin-top: 20em;
+        justify-items: center;
+        align-items: center;
+        
+     }
+
+     footer section{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 90%;
+        padding: var(--spacing-4);
+        gap: var(--spacing-1);
+     }
+
+     footer section article{
+        text-align: left;
+        width: 40%;
+
+     }
+
+     footer section ul{
+        text-align: left;
+        font-size: 1rem;
+     }
+
+     footer section ul .Body-text{
+        font-size: 1rem;
+     }
+
+     #metricas-ventas{
+        grid-template-columns: repeat(3, auto);
+        grid-column: 1/4;
+        grid-row: 2/3;
+        gap: 10em;
+        width: 100%;
+        justify-items: center;
+     }
+
+       #metricas-ventas p{
+        align-items: center;
+       }
+
+     #background-grey{
+        grid-column: 1/4;
+        width: 100%;
+        font-size: 1rem;
+     }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
