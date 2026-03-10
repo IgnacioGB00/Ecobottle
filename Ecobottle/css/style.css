@@ -61,6 +61,7 @@
 }
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 :focus-visible {
@@ -140,7 +141,6 @@ section, header{
     align-items: center;
 
     opacity: 0;
-    z-index: 5;
 }
 
 .fade-in-content {
@@ -279,7 +279,6 @@ h1{
 }
 #bottle{
     width: 25em;
-    height: 45em;
     position:absolute;
     z-index: 0;
     margin: var(--spacing-1);
