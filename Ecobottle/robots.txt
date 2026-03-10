@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Evita que se indexen archivos de código y recursos internos
+Disallow: /js/
+Disallow: /css/
+Disallow: /font/
+
+# Ruta de tu mapa del sitio
+Sitemap: https://ecobottle.vercel.app/sitemap.xml
