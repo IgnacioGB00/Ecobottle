@@ -254,14 +254,29 @@ h1{
 }
 
 /* section benefits */
+
 #benefits{
     grid-template-rows: repeat(2, auto);
     align-items: center;
     justify-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
 }
+#benefits-canvas {
+    position: absolute;
+    inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;             /* detrás de todo el contenido */
+    pointer-events: none;   /* el canvas no bloquea los eventos del section */
+  }
 
+  /* El contenido de texto debe ir encima del canvas */
+  #benefits > *:not(#benefits-canvas) {
+    position: relative;
+    z-index: 1;
+  }
 #benefits-text{
     position: relative;
     top: 0;
