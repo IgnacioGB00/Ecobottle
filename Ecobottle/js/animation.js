@@ -124,8 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = preloadedFrames[frameNumber - 1];
 
     if (img && img.complete) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+
+      
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
     }
   }
 
@@ -179,8 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.createElement('canvas');
     canvas.id = 'benefits-canvas';
     canvas.width = 1099;
-    canvas.height = 1390;
+canvas.height = 1390;
+canvas.style.backgroundColor = 'transparent'; // ← agrega esta línea
     section.insertBefore(canvas, section.firstChild);
+    
 
     // Dibujar primer frame como estado inicial
     preloadedFrames[0].onload = () => renderFrame(1, canvas);
