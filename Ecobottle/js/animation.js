@@ -91,16 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Benefits Section - Video Frame Animation
- * Reproduce el video frame a frame en mouseenter,
- * y lo rebobina en mouseleave.
+ * Benefits Section - Video Frame Animation (AVIF / 192 frames / 24fps)
+ * mouseenter → reproduce adelante  (frame 1 → 192)
+ * mouseleave → rebobina hacia atrás (frame 192 → 1)
  */
 
 (function () {
-  const FRAME_COUNT = 96;
-  const FPS = 12;
-  const FRAME_INTERVAL = 1000 / FPS; // ~83ms por frame
-  const FRAMES_DIR = '../frames/'; // Ruta relativa a la carpeta de frames
+  const FRAME_COUNT = 120;
+  const FPS = 24;
+  const FRAME_INTERVAL = 1000 / FPS; // ~41ms por frame
+  const FRAMES_DIR = './frames/';    // ← carpeta relativa al index.html
 
   let currentFrame = 1;
   let animationTimer = null;
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function preloadFrames() {
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
-      img.src = `${FRAMES_DIR}frame_${String(i).padStart(3, '0')}.jpg`;
+      img.src = `${FRAMES_DIR}frame_${String(i).padStart(3, '0')}.avif`;
       preloadedFrames.push(img);
     }
   }
@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Crear canvas como fondo de la section
     const canvas = document.createElement('canvas');
     canvas.id = 'benefits-canvas';
-    canvas.width = 1280;
-    canvas.height = 720;
+    canvas.width = 1099;
+    canvas.height = 1390;
     section.insertBefore(canvas, section.firstChild);
 
     // Dibujar primer frame como estado inicial

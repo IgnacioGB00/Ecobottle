@@ -261,6 +261,7 @@ h1{
     justify-items: center;
     overflow: hidden;
     position: relative;
+    
 }
 #benefits-canvas {
     position: absolute;
@@ -269,7 +270,10 @@ h1{
     height: 100%;
     object-fit: cover;
     z-index: 0;             /* detrás de todo el contenido */
-    pointer-events: none;   /* el canvas no bloquea los eventos del section */
+    pointer-events: none;
+    margin: auto;
+    top: 18%;
+ /* el canvas no bloquea los eventos del section */
   }
 
   /* El contenido de texto debe ir encima del canvas */
@@ -277,13 +281,6 @@ h1{
     position: relative;
     z-index: 1;
   }
-#benefits-text{
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    align-items: center;
-}
 .underLine{
     z-index: 1; 
     width: 100%; 
@@ -297,12 +294,7 @@ h1{
     align-items: center;
     text-align: start;
 }
-#bottle{
-    width: 25em;
-    position:absolute;
-    z-index: 0;
-    margin: var(--spacing-1);
-}
+
 
 /* section process */
 /* Contenedor principal: define cuánto scroll durará la animación */
@@ -627,16 +619,14 @@ a{
         grid-template-rows: 100%;
     }
     #benefits h2{
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
         text-align: center;
-        z-index: 2;
     }
 
     #benefits-text{
         gap: var(--spacing-4);
+        position: absolute;
+        bottom: 120%;
+        align-self: center;
     }
 
     #benefits-text div{
@@ -668,9 +658,14 @@ a{
         width: 48vw;
      }
 
-     #bottle{
-        width: 74vh;
-     }
+    #benefits-canvas {
+                  /* top:0; right:0; bottom:0; left:0 */
+    width: 80%;
+    height: 80%;
+   
+    top: 0;
+ /* el canvas no bloquea los eventos del section */
+  }
 
      footer{
         margin-top: 20em;
