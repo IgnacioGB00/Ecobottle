@@ -41,7 +41,14 @@
 </head>
 <body>
     <header class="grid">
-        <img src="./img/animationHeader.avif" alt="imagen de una ventana" id="animationHeader">
+        <picture id="animationHeader">
+            <source media="(min-width: 600px)" srcset="./img/animationHeader.avif">
+            
+            <source media="(min-width: 320px)" srcset="./img/animationHeaderCell.avif">
+            
+            <img src="./img/animationHeader.avif" alt="imagen de una ventana" >
+    </picture>  
+        
         <nav role="navigation" aria-label="Principal">   
          <input type="checkbox" id="menu-toggle" />
 

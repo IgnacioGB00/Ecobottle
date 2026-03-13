@@ -5,7 +5,7 @@
  */
 
 (function () {
-  const FRAME_COUNT = 120;
+  const FRAME_COUNT = 192;
   const FPS = 24;
   const FRAME_INTERVAL = 1000 / FPS; // ~41ms por frame
   const FRAMES_DIR = './frames/';    // ← carpeta relativa al index.html
@@ -21,7 +21,7 @@
   function preloadFrames() {
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
-      img.src = `${FRAMES_DIR}frame_${String(i).padStart(3, '0')}.avif`;
+      img.src = `${FRAMES_DIR}frame_${String(i).padStart(3, '0')}.webp`;
       preloadedFrames.push(img);
     }
   }
@@ -32,11 +32,8 @@
     const img = preloadedFrames[frameNumber - 1];
 
     if (img && img.complete) {
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-
-      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      
     }
   }
 
@@ -90,9 +87,8 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'benefits-canvas';
     canvas.width = 1099;
-canvas.height = 1390;
+    canvas.height = 1390;
     section.insertBefore(canvas, section.firstChild);
-    
 
     // Dibujar primer frame como estado inicial
     preloadedFrames[0].onload = () => renderFrame(1, canvas);
