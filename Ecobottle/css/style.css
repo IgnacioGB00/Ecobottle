@@ -277,6 +277,10 @@ h1{
     /* ← sin background-color, sin background */
 }
 
+canvas{
+    background: transparent;
+}
+
   /* El contenido de texto debe ir encima del canvas */
   #benefits > *:not(#benefits-canvas) {
     position: relative;
